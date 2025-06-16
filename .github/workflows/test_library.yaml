@@ -17,6 +17,10 @@ jobs:
 
     steps:
 
+      - name: Uninstall CMake
+        run: |
+          sudo apt remove --purge cmake cmake-data
+
       - name: Install latest CMake
         run: |
           wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
