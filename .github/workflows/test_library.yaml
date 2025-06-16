@@ -17,15 +17,15 @@ jobs:
 
     steps:
 
-      - name: Update and Upgrade
-        run: |
-          sudo apt update
-          sudo apt install ninja-build g++-14
-
       - name: Install latest CMake
         run: |
           wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
           sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ jammy main'
+
+      - name: Install libraries
+        run: |
+          sudo apt update
+          sudo apt install ninja-build g++-14 cmake
       
       - name: Install GTest and GMock
         run: sudo apt-get install libgtest-dev libgmock-dev
