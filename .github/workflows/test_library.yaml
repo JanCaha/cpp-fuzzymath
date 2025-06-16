@@ -36,6 +36,7 @@ jobs:
           cmake --version
           /usr/local/bin/cmake --version
           /usr/bin/cmake --version
+          rm -rf /usr/local/bin/cmake
   
       - name: Checkout
         uses: actions/checkout@v4
