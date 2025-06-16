@@ -12,10 +12,10 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
-    - boost
   host:
     - cmake
     - ninja
+    - boost
 
 test:
   files:
