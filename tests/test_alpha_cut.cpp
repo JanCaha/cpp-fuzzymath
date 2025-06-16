@@ -76,16 +76,16 @@ TEST( AlphaCut, Sorting )
 TEST( AlphaCut, Set )
 {
     std::set<AlphaCut> cuts;
-    cuts.insert( AlphaCut( PreciseFloat( "0.8" ), Interval( 1, 2 ) ) );
-    cuts.insert( AlphaCut( PreciseFloat( "0.3" ), Interval( 1, 2 ) ) );
-    cuts.insert( AlphaCut( PreciseFloat( "0.5" ), Interval( "1.5", "2.5" ) ) );
-    cuts.insert( AlphaCut( PreciseFloat( "0.8" ), Interval( 5 ) ) );
+    cuts.insert( AlphaCut( "0.8", Interval( 1, 2 ) ) );
+    cuts.insert( AlphaCut( "0.3", Interval( 1, 2 ) ) );
+    cuts.insert( AlphaCut( "0.5", Interval( "1.5", "2.5" ) ) );
+    cuts.insert( AlphaCut( "0.8", Interval( 5 ) ) );
 
-    EXPECT_EQ( cuts.find( AlphaCut( PreciseFloat( "0.3" ) ) )->alpha(), PreciseFloat( "0.3" ) );
-    EXPECT_EQ( cuts.find( AlphaCut( PreciseFloat( "0.5" ) ) )->alpha(), PreciseFloat( "0.5" ) );
-    EXPECT_EQ( cuts.find( AlphaCut( PreciseFloat( "0.8" ) ) )->alpha(), PreciseFloat( "0.8" ) );
+    EXPECT_EQ( cuts.find( AlphaCut( "0.3" ) )->alpha(), PreciseFloat( "0.3" ) );
+    EXPECT_EQ( cuts.find( AlphaCut( "0.5" ) )->alpha(), PreciseFloat( "0.5" ) );
+    EXPECT_EQ( cuts.find( AlphaCut( "0.8" ) )->alpha(), PreciseFloat( "0.8" ) );
 
-    EXPECT_EQ( cuts.find( AlphaCut( PreciseFloat( "0.3" ) ) )->interval(), Interval( 1, 2 ) );
-    EXPECT_EQ( cuts.find( AlphaCut( PreciseFloat( "0.5" ) ) )->interval(), Interval( "1.5", "2.5" ) );
-    EXPECT_EQ( cuts.find( AlphaCut( PreciseFloat( "0.8" ) ) )->interval(), Interval( 1, 2 ) );
+    EXPECT_EQ( cuts.find( AlphaCut( "0.3" ) )->interval(), Interval( 1, 2 ) );
+    EXPECT_EQ( cuts.find( AlphaCut( "0.5" ) )->interval(), Interval( "1.5", "2.5" ) );
+    EXPECT_EQ( cuts.find( AlphaCut( "0.8" ) )->interval(), Interval( 1, 2 ) );
 }
