@@ -31,7 +31,9 @@ jobs:
         run: sudo apt-get install libgtest-dev libgmock-dev
 
       - name: Version Cmake
-        run: cmake --version
+        run: |
+          whereis cmake
+          cmake --version
   
       - name: Checkout
         uses: actions/checkout@v4
