@@ -30,12 +30,8 @@ jobs:
       - name: Install GTest and GMock
         run: sudo apt-get install libgtest-dev libgmock-dev
 
-      - name: Version Cmake
+      - name: Remove old CMake
         run: |
-          whereis cmake
-          cmake --version
-          /usr/local/bin/cmake --version
-          /usr/bin/cmake --version
           rm -rf /usr/local/bin/cmake
   
       - name: Checkout
