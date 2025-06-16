@@ -1,0 +1,35 @@
+@PACKAGE_INIT@
+
+# find
+include(CMakeFindDependencyMacro)
+find_package(Boost REQUIRED COMPONENTS interval)
+
+include("${CMAKE_CURRENT_LIST_DIR}/FuzzyMathTargets.cmake")
+
+# Define standard variables for compatibility
+set(FuzzyMath_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include/FuzzyMath")
+set(FuzzyMath_VERSION "@PROJECT_VERSION@")
+set(FuzzyMath_FOUND True)
+
+# Default to shared libraries if no component is specified
+set(FUZZYMATH_LIBRARIES FuzzyMath::FuzzyMath_shared)
+
+Handle requested components
+if(FuzzyMath_FIND_COMPONENTS)
+    foreach(comp ${SimpleRasters_FIND_COMPONENTS})
+        if(comp STREQUAL "static")
+            set(FuzzyMath_LIBRARIES FuzzyMath::FuzzyMath_static)
+        elseif(comp STREQUAL "shared" OR comp STREQUAL "dynamic")
+            set(FuzzyMath_LIBRARIES FuzzyMath::FuzzyMath_shared)
+        else()
+            set(FuzzyMath_FOUND False)
+            set(FuzzyMath_NOT_FOUND_MESSAGE "Unsupported component: ${comp}")
+        endif()
+    endforeach()
+endif()
+
+if(FuzzyMath_FOUND)
+    # Provide both static and shared library variables for flexibility
+    set(FuzzyMath_SHARED_LIBRARIES SimpleRasters::FuzzyMath_shared)
+    set(FuzzyMath_STATIC_LIBRARIES SimpleRasters::FuzzyMath_static)
+endif()

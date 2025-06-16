@@ -1,0 +1,37 @@
+package:
+  name: libfuzzymath
+  version: "0.1.0"
+
+source:
+  path: ..
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+  host:
+    - cmake
+    - ninja
+
+test:
+  files:
+    - test_script.sh # [unix]
+    - test_script.bat # [win]
+  commands:
+    - bash test_script.sh # [unix]
+    - call test_script.bat # [win]
+
+about:
+  home: https://github.com/JanCaha/cpp-fuzzymath
+  license: MIT
+  summary: "Simple C++ library for fuzzy numbers and fuzzy math operations."
+
+extra:
+  recipe-maintainers:
+    - JanCaha
+  channels:
+    - conda-forge
+    - defaults
