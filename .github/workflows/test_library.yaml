@@ -25,7 +25,7 @@ jobs:
       - name: Install libraries
         run: |
           sudo apt update
-          sudo apt install ninja-build g++-14 cmake
+          sudo apt install ninja-build g++-14 cmake boostd-dev
       
       - name: Install GTest and GMock
         run: sudo apt-get install libgtest-dev libgmock-dev
